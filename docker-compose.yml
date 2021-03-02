@@ -1,0 +1,50 @@
+version: '3.5'
+
+volumes:
+  db_data:
+
+services:  
+    
+  #DB-Server - Postgres container
+  db:
+    image: postgres:latest
+    restart: always
+    network_mode: bridge
+    environment: 
+        - POSTGRES_USER=prod
+        - POSTGRES_PASSWORD=prod@123
+        - POSTGRES_DB=db
+        
+    container_name: DB-Server
+    expose:
+      - 5432
+    ports: 
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+       
+  #Front-end server
+    
+  
+  #Back-end Server   
+  # backend-server:
+    # build:
+      # context: .
+      # dockerfile: Dockerfile
+    # #image: rogeriodcb/vote-service:latest
+    # network_mode: bridge
+    # container_name: Back-End-Server
+    # environment:
+      # - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/db
+      # - TZ=America/Sao_Paulo
+      
+    # expose:
+      # - 8081
+    # ports:
+      # - 8081:8081
+    # depends_on:
+      # - db
+
+    # links:
+      # - db
