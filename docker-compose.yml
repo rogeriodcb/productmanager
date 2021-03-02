@@ -13,7 +13,7 @@ services:
     environment: 
         - POSTGRES_USER=prod
         - POSTGRES_PASSWORD=prod@123
-        - POSTGRES_DB=db
+        - POSTGRES_DB=produto
         
     container_name: DB-Server
     expose:
